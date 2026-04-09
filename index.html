@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Johnson Anietie Joel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Space+Grotesk:wght@300;400;500&family=Space+Mono&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#080808;--bg2:#0f0f0f;--line:#1e1e1e;--text:#f2f0eb;--muted:#555;--muted2:#333;--acc:#c8f55a;--acc2:#a8d43a;--mono:'Space Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:15px;-webkit-font-smoothing:antialiased;cursor:none}
+.cur{position:fixed;width:10px;height:10px;background:var(--acc);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s}
+.cur.big{width:36px;height:36px;background:transparent;border:1px solid var(--acc)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 3rem;border-bottom:1px solid var(--line)}
+nav::before{content:'';position:absolute;inset:0;background:rgba(8,8,8,.92);backdrop-filter:blur(14px);z-index:-1}
+.logo{font-family:'Playfair Display',serif;font-size:17px;font-weight:900;letter-spacing:-.02em;color:var(--text);text-decoration:none}
+.logo span{color:var(--acc)}
+.nav-r{display:flex;align-items:center;gap:2.5rem}
+.nav-r a{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-r a:hover{color:var(--text)}
+.status{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;color:var(--acc)}
+.status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--acc);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 3rem 4rem;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hero-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Playfair Display',serif;font-size:clamp(90px,18vw,220px);font-weight:900;color:transparent;-webkit-text-stroke:1px var(--line);white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:-.04em}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:auto;padding-top:9rem}
+.hero-tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:6px 14px}
+.hero-num{font-family:var(--mono);font-size:11px;color:var(--muted2)}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(54px,9vw,112px);font-weight:900;line-height:.92;letter-spacing:-.04em;margin-bottom:2rem}
+.hero h1 em{font-style:italic;color:var(--acc)}
+.hero-sub{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem}
+.hero-desc{font-size:14px;color:var(--muted);max-width:400px;line-height:1.75;font-weight:300}
+.hero-btns{display:flex;gap:10px;flex-shrink:0}
+.btn{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;padding:10px 20px;border:1px solid var(--line);color:var(--muted);text-decoration:none;transition:all .2s;display:inline-block}
+.btn:hover,.btn.fill{background:var(--acc);color:#000;border-color:var(--acc)}
+.btn.fill:hover{background:var(--acc2)}
+
+.grid-section{display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid var(--line)}
+.grid-label{padding:3rem;border-right:1px solid var(--line);display:flex;align-items:flex-start;justify-content:center}
+.grid-label span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-rl;transform:rotate(180deg)}
+.grid-content{padding:3rem}
+
+.skill-row{display:flex;align-items:baseline;gap:1.5rem;padding:1.1rem 0;border-bottom:1px solid var(--line)}
+.skill-row:last-child{border-bottom:none}
+.skill-cat{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);min-width:150px;flex-shrink:0}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-size:12px;padding:4px 11px;border:1px solid var(--line);color:#666;background:var(--bg2)}
+.chip.hi{border-color:#222f00;background:#101800;color:var(--acc)}
+
+.project-item{padding:2rem 0;border-bottom:1px solid var(--line)}
+.project-item:first-child{padding-top:0}
+.project-item:last-child{border-bottom:none;padding-bottom:0}
+.proj-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:.6rem}
+.proj-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;letter-spacing:-.02em}
+.proj-role{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);flex-shrink:0}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:.9rem;max-width:620px}
+.stacks{display:flex;flex-wrap:wrap;gap:6px}
+.stag{font-family:var(--mono);font-size:10px;padding:3px 8px;border:1px solid var(--line);color:var(--muted2)}
+
+.edu-block{padding:1.5rem 0;border-bottom:1px solid var(--line)}
+.edu-block:last-child{border-bottom:none;padding-bottom:0}
+.edu-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.4rem}
+.edu-school{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;letter-spacing:-.01em}
+.edu-yr{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.08em}
+.edu-deg{font-family:var(--mono);font-size:11px;color:var(--acc);letter-spacing:.06em;margin-bottom:.5rem}
+.edu-info{font-size:13px;color:var(--muted);font-weight:300;line-height:1.65}
+
+.cert-sec-head{display:flex;justify-content:space-between;margin:2.5rem 0 1rem;padding-bottom:.75rem;border-bottom:1px solid var(--line)}
+.cert-sec-head span{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cert-item{display:flex;align-items:center;justify-content:space-between;padding:.85rem 0;border-bottom:1px solid var(--line);gap:1rem}
+.cert-item:last-child{border-bottom:none}
+.cert-name{font-size:13px;color:var(--text)}
+.cert-src{font-family:var(--mono);font-size:10px;color:var(--muted2)}
+
+.contact-row{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);overflow:hidden}
+.contact-item{padding:1.4rem;border-right:1px solid var(--line);text-decoration:none;transition:background .2s}
+.contact-item:last-child{border-right:none}
+.contact-item:hover{background:var(--bg2)}
+.cl{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);margin-bottom:.5rem}
+.cv{font-size:12px;color:var(--acc);word-break:break-all;font-family:var(--mono)}
+
+footer{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 3rem}
+.fl{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.06em}
+
+@media(max-width:680px){
+  nav{padding:1rem 1.25rem}.nav-r a{display:none}
+  .hero{padding:0 1.25rem 3rem}.hero-top{flex-direction:column;gap:.75rem;padding-top:7rem}
+  .hero-sub{flex-direction:column;align-items:flex-start}
+  .hero-bg-text{font-size:22vw}
+  .grid-section{grid-template-columns:1fr}
+  .grid-label{border-right:none;border-bottom:1px solid var(--line);padding:1.25rem;justify-content:flex-start}
+  .grid-label span{writing-mode:horizontal-tb;transform:none}
+  .grid-content{padding:1.5rem}
+  .contact-row{grid-template-columns:1fr 1fr}
+  .contact-item{border-bottom:1px solid var(--line)}
+  footer{flex-direction:column;gap:.4rem;padding:1.25rem;text-align:center}
+  .proj-head{flex-direction:column;gap:.2rem}
+  .skill-row{flex-direction:column;gap:.5rem}
+  .edu-head{flex-direction:column;gap:.2rem}
+}
+</style>
+</head>
+<body>
+<div class="cur" id="cur"></div>
+
+<nav>
+  <a class="logo" href="#"><span>J</span>AJ</a>
+  <div class="nav-r">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Work</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+    <div class="status">Available</div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg-text">JOEL</div>
+  <div class="hero-top">
+    <span class="hero-tag">IT Placement · 2025</span>
+    <span class="hero-num">24CD036482 / CU</span>
+  </div>
+  <h1>Johnson<br>Anietie <em>Joel.</em></h1>
+  <div class="hero-sub">
+    <p class="hero-desc">CS student at Covenant University. Building ML systems, automation tools & data-driven apps. Ota, Nigeria.</p>
+    <div class="hero-btns">
+      <a class="btn fill" href="#projects">View Work</a>
+      <a class="btn" href="#contact">Contact</a>
+    </div>
+  </div>
+</div>
+
+<div class="grid-section" id="skills">
+  <div class="grid-label"><span>Skills</span></div>
+  <div class="grid-content">
+    <div class="skill-row">
+      <span class="skill-cat">Languages</span>
+      <div class="tags"><span class="chip hi">Python</span><span class="chip hi">JavaScript</span><span class="chip hi">Node.js</span><span class="chip">SQL</span><span class="chip">HTML/CSS</span><span class="chip">Streamlit</span></div>
+    </div>
+    <div class="skill-row">
+      <span class="skill-cat">AI & ML</span>
+      <div class="tags"><span class="chip hi">Prompt Engineering</span><span class="chip hi">Supervised Learning</span><span class="chip hi">Model Tuning</span><span class="chip">Predictive Modeling</span><span class="chip">Multimodal Biometrics</span></div>
+    </div>
+    <div class="skill-row">
+      <span class="skill-cat">Libraries</span>
+      <div class="tags"><span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">Scikit-learn</span></div>
+    </div>
+    <div class="skill-row">
+      <span class="skill-cat">Tools</span>
+      <div class="tags"><span class="chip">SPSS</span><span class="chip">MATLAB</span><span class="chip">Excel</span><span class="chip">Git/GitHub</span><span class="chip">Illustrator</span><span class="chip">Photoshop</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="grid-section" id="projects">
+  <div class="grid-label"><span>Work</span></div>
+  <div class="grid-content">
+    <div class="project-item">
+      <div class="proj-head"><span class="proj-title">Student Performance Predictor</span><span class="proj-role">Lead Developer</span></div>
+      <p class="proj-desc">ML app using Python & Streamlit predicting academic outcomes from lifestyle and study data. Includes preprocessing pipelines and visualisation dashboards.</p>
+      <div class="stacks"><span class="stag">Python</span><span class="stag">Streamlit</span><span class="stag">Scikit-learn</span><span class="stag">Pandas</span></div>
+    </div>
+    <div class="project-item">
+      <div class="proj-head"><span class="proj-title">Telegram & Discord Bots</span><span class="proj-role">Bot Architect</span></div>
+      <p class="proj-desc">High-performance automation bots with real-time data tracking and secure transaction simulation built on Node.js.</p>
+      <div class="stacks"><span class="stag">Node.js</span><span class="stag">Telegram API</span><span class="stag">Discord.js</span><span class="stag">Automation</span></div>
+    </div>
+    <div class="project-item">
+      <div class="proj-head"><span class="proj-title">OTG Streetwear</span><span class="proj-role">Founder & Creative Lead</span></div>
+      <p class="proj-desc">Technical streetwear brand — end-to-end from garment mockups and AI design tools to digital marketing and brand identity.</p>
+      <div class="stacks"><span class="stag">Illustrator</span><span class="stag">Photoshop</span><span class="stag">AI Design</span><span class="stag">Branding</span></div>
+    </div>
+    <div class="project-item">
+      <div class="proj-head"><span class="proj-title">CUFS Equity Research — Beta Glass</span><span class="proj-role">Analyst</span></div>
+      <p class="proj-desc">Quantitative analysis using mathematical modelling and financial forecasting on Beta Glass Plc for competitive investment review.</p>
+      <div class="stacks"><span class="stag">SPSS</span><span class="stag">Excel</span><span class="stag">Financial Modelling</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="grid-section" id="education">
+  <div class="grid-label"><span>Education</span></div>
+  <div class="grid-content">
+    <div class="edu-block">
+      <div class="edu-head"><span class="edu-school">Covenant University</span><span class="edu-yr">2024 — 2028</span></div>
+      <div class="edu-deg">B.Sc. Computer Science &nbsp;·&nbsp; Ota, Nigeria</div>
+      <p class="edu-info">SEN 211 · IFT 211 · CYB 211 · Machine Learning · Web Development. Foundation in Industrial Mathematics (100L).</p>
+    </div>
+    <div class="cert-sec-head"><span>Certifications</span><span>03</span></div>
+    <div class="cert-item"><span class="cert-name">Prompt Engineering Specialization</span><span class="cert-src">LinkedIn Learning</span></div>
+    <div class="cert-item"><span class="cert-name">Machine Learning & Deep Learning Program</span><span class="cert-src">In Progress</span></div>
+    <div class="cert-item"><span class="cert-name">Data Analysis with SPSS / MATLAB</span><span class="cert-src">Covenant University</span></div>
+  </div>
+</div>
+
+<div class="grid-section" id="contact">
+  <div class="grid-label"><span>Contact</span></div>
+  <div class="grid-content">
+    <div class="contact-row">
+      <a class="contact-item" href="tel:+2348136437912"><div class="cl">Phone</div><div class="cv">+234 813 643 7912</div></a>
+      <a class="contact-item" href="mailto:ajohnson.2400065@stu.cu.edu.ng"><div class="cl">Email</div><div class="cv">ajohnson.2400065@stu.cu.edu.ng</div></a>
+      <a class="contact-item" href="https://www.linkedin.com/in/joel-johnson-5706b6356" target="_blank"><div class="cl">LinkedIn</div><div class="cv">joel-johnson-5706b6356</div></a>
+      <a class="contact-item" href="https://github.com/yourusername" target="_blank"><div class="cl">GitHub</div><div class="cv">add your username</div></a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="fl">Johnson Anietie Joel &nbsp;·&nbsp; 2025</span>
+  <span class="fl">Ota, Nigeria &nbsp;·&nbsp; Available for IT Placement</span>
+</footer>
+
+<script>
+const cur=document.getElementById('cur');
+document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px'});
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cur.classList.add('big'));
+  el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
+});
+</script>
+</body>
+</html>
